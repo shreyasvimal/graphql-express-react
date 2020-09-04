@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const serverless = require('serverless-http');
 const apiRouter = require('./graphql');
 const uiRouter = require('./app');
 const path = require('path');
@@ -10,6 +11,6 @@ app.use('/static', express.static(path.join(__dirname, 'app', 'build', 'static')
 app.use('/', express.static(path.join(__dirname, 'app', 'build')));
 app.use('/api', apiRouter);
 app.use('/app', uiRouter);
-const port = process.env.PORT || 4000
-app.listen(port);
-console.log(`Running a GraphQL API server at localhost:${port}/graphql`);
+
+module.exports = app;
+module.exports.handler = serverless(app);

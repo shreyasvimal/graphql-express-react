@@ -14,13 +14,14 @@
     "graphql": "^14.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "serverless-http": "^2.5.0"
   },
   "scripts": {
     "start:local": "npm-run-all --parallel watch:server start:web",
     "start:web": "react-scripts start",
     "start": "node server",
-    "watch:server": "nodemon --watch server server",
+    "watch:server": "nodemon --watch server server-local",
     "prebuild": "rm -rf server/app/build",
     "build": "react-scripts build",
     "postbuild": "mv build server/app/build",
